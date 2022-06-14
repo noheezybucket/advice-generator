@@ -7,12 +7,13 @@ const fetchData = async () => {
     .then((data) => (advice = data.slip));
 };
 
-const displayData = async () => {
-  await fetchData();
+const displayData = () => {
   id.textContent = `ADVICE #${advice.id}`;
   text.textContent = `"${advice.advice}"`;
 };
 
-dice.addEventListener("click", () => {
+dice.addEventListener("click", async () => {
+  await fetchData();
   displayData();
+  console.log(advice.advice);
 });
